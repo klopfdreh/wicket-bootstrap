@@ -46,6 +46,8 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.AnimatedB
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.AnimatedBehavior.Animation;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Draggable;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.DraggableConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.InteractJsDraggable;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.InteractJsDraggableConfig;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.behavior.Resizable;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.button.DropDownAutoOpen;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.contextmenu.ButtonListContextMenu;
@@ -83,6 +85,10 @@ public class ExtensionsPage extends BasePage {
     public ExtensionsPage(PageParameters parameters) {
         super(parameters);
 
+        Label label = new Label("draggable-box-interactjs");
+        label.add(new InteractJsDraggable(new InteractJsDraggableConfig().withHandle("#"+label.getMarkupId())));
+        add(label);
+        
         List<Html5Player.IVideo> videos = Lists
                 .<Html5Player.IVideo> newArrayList(
                     new Video(
